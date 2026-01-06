@@ -4,6 +4,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Voidwears – Build Your Own</title>
   <style>
+    .product-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.product-card {
+  background: #222;
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  margin: 15px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.product-card img:hover {
+  transform: scale(1.05);
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0 5px 0;
+}
+
+.product-card p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.product-card button {
+  background: #fff;
+  color: #111;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.product-card button:hover {
+  background: #ccc;
+  }
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
@@ -215,5 +269,35 @@
     idea.oninput = calculatePrice;
 
     calculatePrice();
-  </script></body>
+  </script><!-- Product Cards -->
+<div class="product-section">
+  <div class="product-card">
+    <img src="images/tee1.jpg" alt="Voidwears Printed Tee 1">
+    <h2>Printed Tee 1</h2>
+    <p>Fabric: Bio-Wash Cotton</p>
+    <p>Price: ₹799</p>
+    <button onclick="submitOrder()">Order Now</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/tee2.jpg" alt="Voidwears Printed Tee 2">
+    <h2>Printed Tee 2</h2>
+    <p>Fabric: Bio-Wash Cotton</p>
+    <p>Price: ₹799</p>
+    <button onclick="submitOrder()">Order Now</button>
+  </div>
+
+  <div class="product-card">
+    <img src="images/tee3.jpg" alt="Voidwears Printed Tee 3">
+    <h2>Printed Tee 3</h2>
+    <p>Fabric: Bio-Wash Cotton</p>
+    <p>Price: ₹799</p>
+    <button onclick="submitOrder()">Order Now</button>
+  </div>
+</div>
+<!-- END OF PRODUCT CARDS --><script>
+function submitOrder() {
+  alert('Order feature coming soon!');
+}
+</script></body>
 </html>
