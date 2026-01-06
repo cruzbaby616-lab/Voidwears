@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voidwears – Build Your Own</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #eaeaea;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #000;
+      border-bottom: 1px solid #222;
+    }
+    header h1 {
+      margin: 0;
+      letter-spacing: 2px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .panel {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      border-bottom: 1px solid #222;
+      padding-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 6px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .price {
+      font-size: 22px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ccc;
+    }
+    .preview {
+      height: 320px;
+      background: #000;
+      border: 1px dashed #333;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 14px;
+      padding: 20px;
+    }
+    .preview strong {
+      display: block;
+      margin-bottom: 10px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VOIDWEARS</h1>
+    <p>Build Your Own Dark Streetwear</p>
+  </header>  <div class="container">
+    <div class="panel">
+      <h2>Customize Your Piece</h2><label>Product Type</label>
+  <select id="product">
+    <option value="tshirt">T‑Shirt</option>
+    <option value="hoodie">Hoodie</option>
+    <option value="sweatshirt">Sweatshirt</option>
+  </select>
+
+  <label>Fabric & GSM</label>
+  <select id="fabric">
+    <option value="180">180 GSM Cotton</option>
+    <option value="210">210 GSM Cotton</option>
+    <option value="240">240 GSM French Terry</option>
+  </select>
+
+  <label>Fit</label>
+  <select id="fit">
+    <option value="regular">Regular</option>
+    <option value="oversized">Oversized</option>
+  </select>
+
+  <label>Print Type</label>
+  <select id="print">
+    <option value="none">No Print</option>
+    <option value="dtf">DTF Print</option>
+    <option value="text">Text Print</option>
+    <option value="graphic">Graphic Print</option>
+  </select>
+
+  <label>Your Design Idea</label>
+  <textarea id="idea" placeholder="Describe your custom design idea..."></textarea>
+
+  <div class="price">Price: ₹<span id="price">0</span></div>
+
+  <button onclick="submitOrder()">Submit Custom Order</button>
+</div>
+
+<div class="panel">
+  <h2>Live Preview</h2>
+  <div class="preview" id="preview">
+    <div>
+      <strong>Voidwears Preview</strong>
+      Select options to see details here
+    </div>
+  </div>
+</div>
+
+  </div>  <footer>
+    © Voidwears — Custom‑made streetwear
+  </footer>  <script>
+    const product = document.getElementById('product');
+    const fabric = document.getElementById('fabric');
+    const fit = document.getElementById('fit');
+    const print = document.getElementById('print');
+    const idea = document.getElementById('idea');
+    const priceEl = document.getElementById('price');
+    const preview = document.getElementById('preview');
+
+    function calculatePrice() {
+      let price = 0;
+
+      // Base product price
+      if (product.value === 'tshirt') price += 499;
+      if (product.value === 'hoodie') price += 899;
+      if (product.value === 'sweatshirt') price += 799;
+
+      // Fabric
+      if (fabric.value === '180') price += 0;
+      if (fabric.value === '210') price += 100;
+      if (fabric.value === '240') price += 200;
+
+      // Fit
+      if (fit.value === 'oversized') price += 100;
+
+      // Print
+      if (print.value === 'dtf') price += 150;
+      if (print.value === 'text') price += 80;
+      if (print.value === 'graphic') price += 200;
+
+      priceEl.textContent = price;
+
+      preview.innerHTML = `
+        <div>
+          <strong>${product.options[product.selectedIndex].text}</strong>
+          Fabric: ${fabric.options[fabric.selectedIndex].text}<br>
+          Fit: ${fit.value}<br>
+          Print: ${print.options[print.selectedIndex].text}<br><br>
+          <em>${idea.value || 'No custom idea added'}</em>
+        </div>
+      `;
+    }
+
+    function submitOrder() {
+      alert('Your custom Voidwears order has been received. We will contact you for design confirmation.');
+    }
+
+    product.onchange = calculatePrice;
+    fabric.onchange = calculatePrice;
+    fit.onchange = calculatePrice;
+    print.onchange = calculatePrice;
+    idea.oninput = calculatePrice;
+
+    calculatePrice();
+  </script></body>
+</html>
